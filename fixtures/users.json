@@ -1,0 +1,16 @@
+[
+  {
+    "desc": "Valid User",
+    "email": "valid_user@gmail.com",
+    "username": "valid_user_01",
+    "password": "password123",
+    "expectedStatus": 201
+  },
+  {
+    "desc": "Invalid User (Empty Email)",
+    "email": "",
+    "username": "invalid_user_01",
+    "password": "password123",
+    "expectedStatus": 201
+  }
+]
