@@ -19,7 +19,7 @@ test.describe('Appointment Booking Tests', () => {
 
   test('TC_APPT_01: Verify Successful Appointment Booking (Happy Path)', async ({ page }) => {
     // US Date Format: MM/DD/YYYY
-    const testDate = new Date().toLocaleDateString(); 
+    const testDate = new Date().getDate()+ "/" + new Date().getUTCMonth() + 1 + "/" + new Date().getFullYear(); 
     const testComment = 'Regular Checkup';
 
     // 1. Fill out the form
