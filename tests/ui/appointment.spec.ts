@@ -19,19 +19,25 @@ test.describe('Appointment Booking Tests', () => {
 
   test('TC_APPT_01: Verify Successful Appointment Booking (Happy Path)', async ({ page }) => {
     // US Date Format: MM/DD/YYYY
-    const testDate = new Date().getDate()+ "/" + new Date().getUTCMonth() + 1 + "/" + new Date().getFullYear(); 
+    const today = new Date();
+
+    const formattedDate =
+      String(today.getDate()).padStart(2, '0') + "/" +
+      String(today.getMonth() + 1).padStart(2, '0') + "/" +
+      today.getFullYear();
+
     const testComment = 'Regular Checkup';
 
     // 1. Fill out the form
     await appointmentPage.selectProgram('Medicaid');
-    await appointmentPage.bookAppointment('Hongkong CURA Healthcare Center', testDate, testComment);
+    await appointmentPage.bookAppointment('Hongkong CURA Healthcare Center', formattedDate, testComment);
 
     // 2. Assert we are on the confirmation page
     await expect(appointmentPage.confirmationHeader).toBeVisible();
 
     // 3. Navigate to History to confirm persistence (E2E Check)
     await historyPage.navigateToHistory();
-    await historyPage.verifyAppointmentExists(testDate, testComment);
+    await historyPage.verifyAppointmentExists(formattedDate, testComment);
   });
 
   test('TC_APPT_02: Verify Date Field Requirement', async ({ page }) => {
