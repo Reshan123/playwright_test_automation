@@ -26,8 +26,8 @@ This repository contains the Playwright automation test suite for the **CURA Hea
 4.  **Environment Configuration:**
     Create a `.env` file in the root directory with the following:
     ```ini
-    BASE_URL_UI=[https://katalon-demo-cura.herokuapp.com/](https://katalon-demo-cura.herokuapp.com/)
-    BASE_URL_API=[https://fakestoreapi.com](https://fakestoreapi.com)
+    BASE_URL_UI=https://katalon-demo-cura.herokuapp.com/
+    BASE_URL_API=https://fakestoreapi.com
     CI=false
     ```
 
