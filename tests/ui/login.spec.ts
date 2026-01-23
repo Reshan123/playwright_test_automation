@@ -1,4 +1,3 @@
-// tests/ui/login.spec.ts
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
 
@@ -31,7 +30,7 @@ test.describe('Authentication Tests', () => {
     // 1. Try to login with empty strings
     await loginPage.login('', '');
 
-    // 2. Assert error message is shown (Based on your finding that empty inputs trigger the server error)
+    // 2. Assert error message is shown
     await loginPage.verifyLoginError();
   });
 });

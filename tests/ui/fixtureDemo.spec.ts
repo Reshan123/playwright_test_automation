@@ -1,4 +1,3 @@
-// Important: Import 'test' from your fixture file, NOT @playwright/test
 import { test, expect } from '../../fixtures/loginFixture';
 
 test('TC_FIXTURE_01: Verify Auto-Login works', async ({ loggedInPage }) => {

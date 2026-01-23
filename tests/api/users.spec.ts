@@ -1,10 +1,7 @@
-// tests/api/users.spec.ts
 import { test, expect } from '@playwright/test';
 import { ApiClient } from '../../utils/ApiClient';
-// Import the JSON data
 import testData from '../../fixtures/users.json';
 
-// Read the API URL from your .env file
 const BASE_URL = process.env.BASE_URL_API || 'https://fakestoreapi.com';
 
 test.describe('User API Management', () => {
@@ -49,10 +46,10 @@ test.describe('User API Management', () => {
     // 2. Send POST request
     const response = await api.post('/users', newUser);
 
-    // 3. Assert Status Code is 201 (FakeStoreAPI returns 200 for creation, not 201)
+    // 3. Assert Status Code is 201
     expect(response.status()).toBe(201);
 
-    // 4. Validate response contains an ID (indicating creation)
+    // 4. Validate response contains an ID
     const body = await response.json();
     expect(body).toHaveProperty('id');
     console.log(`Created User ID: ${body.id}`);
@@ -72,15 +69,14 @@ test.describe('User API Management', () => {
   });
 
   test('TC_API_04: Create User with Invalid Data (Negative)', async () => {
-    // Sending a payload that might be rejected (or just testing API resilience)
-    // Note: FakeStoreAPI is very permissible, so we mostly check it doesn't crash (500 error)
+    // Sending a payload that might be rejected
     const invalidUser = {
-      email: 12345, // Invalid email format (sending number instead of string)
+      email: 12345, // Invalid email format
     };
 
     const response = await api.post('/users', invalidUser);
     
-    // We expect the API to handle this gracefully (not 500 server error)
+    // We expect the API to handle this gracefully
     expect(response.status()).not.toBe(500);
   });
 });

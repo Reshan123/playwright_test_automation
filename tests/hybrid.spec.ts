@@ -8,12 +8,11 @@ test.describe('Hybrid E2E Testing (API + UI)', () => {
     // --- STEP 1: API Actions (The "Backend" Check) ---
     console.log('Step 1: Checking API Status...');
     
-    // We use the 'request' fixture to make an API call
-    // (Using the Fallback URL in case .env is missing in CI)
+    // Use the 'request' fixture to make an API call
     const apiBase = process.env.BASE_URL_API || 'https://fakestoreapi.com';
     const response = await request.get(`${apiBase}/products`);
     
-    // Assert the "backend" is alive before wasting time on the UI
+    // Assert the "backend" is alive
     expect(response.status(), 'API Service should be active').toBe(200);
     
     const body = await response.json();

@@ -29,15 +29,12 @@ export class AppointmentPage {
     // 1. Fill the date
     await this.dateInput.fill(date);
     await this.dateInput.press('Enter');
-
-    // 2. KEY FIX: Press 'Escape' to explicitly close the calendar popup
-    // This avoids clicking elements that might be covered by the calendar
     await this.page.keyboard.press('Escape');
 
     // 3. Fill the comment
     await this.commentInput.fill(comment);
     
-    // 4. Click book (forcing it just in case)
+    // 4. Click book
     await this.bookButton.click({ force: true });
   }
 }

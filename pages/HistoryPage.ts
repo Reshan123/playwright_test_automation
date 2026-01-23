@@ -18,7 +18,7 @@ export class HistoryPage {
   }
 
   async verifyAppointmentExists(date: string, comment: string) {
-    // We check if any panel contains both the specific date and comment
+    // Check if any panel contains both the specific date and comment
     const appointmentItem = this.page.locator('.panel', { hasText: date }).filter({ hasText: comment });
     await expect(appointmentItem).toBeVisible();
   }

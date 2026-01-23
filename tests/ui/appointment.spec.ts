@@ -18,7 +18,6 @@ test.describe('Appointment Booking Tests', () => {
   });
 
   test('TC_APPT_01: Verify Successful Appointment Booking (Happy Path)', async ({ page }) => {
-    // US Date Format: MM/DD/YYYY
     const today = new Date();
 
     const formattedDate =
@@ -51,12 +50,12 @@ test.describe('Appointment Booking Tests', () => {
   });
 
   test('TC_APPT_03: Verify Past Date Acceptance (Documenting Behavior)', async ({ page }) => {
-    // Using a clear past date (MM/DD/YYYY)
+    // Using a past date
     const pastDate = '01/01/2020';
     
     await appointmentPage.bookAppointment('Tokyo CURA Healthcare Center', pastDate, 'Back to the future');
     
-    // Assert that it DID successfully book (proving the logic gap exists)
+    // Assert that it DID successfully book
     await expect(appointmentPage.confirmationHeader).toBeVisible();
   });
 });

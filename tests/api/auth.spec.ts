@@ -1,4 +1,3 @@
-// tests/api/auth.spec.ts
 import { test, expect } from '@playwright/test';
 import { ApiClient } from '../../utils/ApiClient';
 
@@ -35,7 +34,7 @@ test.describe('Authentication API', () => {
 
     const response = await api.post('/auth/login', invalidCredentials);
     
-    // FakeStoreAPI typically returns 401 for bad auth
+    // Returns 401 for bad auth
     expect(response.status()).toBe(401);
   });
 });

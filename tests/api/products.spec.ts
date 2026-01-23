@@ -1,4 +1,3 @@
-// tests/api/products.spec.ts
 import { test, expect } from '@playwright/test';
 import { ApiClient } from '../../utils/ApiClient';
 
